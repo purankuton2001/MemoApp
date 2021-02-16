@@ -5,11 +5,11 @@ import { StyleSheet, Text, View } from 'react-native';
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>比でにゃん
-
-      </Text>
+      <Text>比でにゃん</Text>
+      {/* eslint-disable-next-line */}
       <StatusBar style="auto" />
     </View>
+
   );
 }
 
