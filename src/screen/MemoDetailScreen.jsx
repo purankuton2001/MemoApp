@@ -1,5 +1,3 @@
-import { Feather } from '@expo/vector-icons';
-
 import React from 'react';
 import {
   Text, View, StyleSheet, ScrollView,
@@ -23,7 +21,7 @@ export default function MemoDetailScreen() {
           本文用なので使い方を間違えると不自然に見えることもありますので要注意。
         </Text>
       </ScrollView>
-      <CircleButton style={{ top: 160, bottom: 'auto' }}><Feather name="plus" size={32} color="white" /></CircleButton>
+      <CircleButton name="check" style={{ top: 160, bottom: 'auto' }} />
     </View>
   );
 }

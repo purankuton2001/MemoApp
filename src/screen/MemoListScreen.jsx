@@ -1,4 +1,3 @@
-import { Feather } from '@expo/vector-icons';
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 
@@ -11,7 +10,7 @@ export default function MemoListScreen() {
     <View style={styles.container}>
       <AppBar />
       <MemoList />
-      <CircleButton><Feather name="plus" size={32} color="black" /></CircleButton>
+      <CircleButton name="plus" />
     </View>
   );
 }
