@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { CardStyleInterpolators, createStackNavigator } from '@react-navigation/stack';
 import firebase from 'firebase';
 
-import firebaseConfig from './env';
+import { firebaseConfig } from './env';
 import MemoDetailScreen from './src/screen/MemoDetailScreen';
 import MemoListScreen from './src/screen/MemoListScreen';
 import MemoEditScreen from './src/screen/MemoEditScreen';
@@ -21,7 +21,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Signup"
+        initialRouteName="Login"
         screenOptions={{
           headerStyle: { backgroundColor: '#467FD3' },
           headerTitleStyle: { color: '#FFFFFF' },
