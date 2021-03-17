@@ -11,13 +11,14 @@ import MemoCreateScreen from './src/screen/MemoCreateScreen';
 import LoginScreen from './src/screen/LoginScreen';
 import SignupScreen from './src/screen/SignupScreen';
 
-export default function App() {
-  const Stack = createStackNavigator();
+require('firebase/firestore');
 
+export default function App() {
   if (firebase.apps.length === 0) {
     firebase.initializeApp(firebaseConfig);
   }
 
+  const Stack = createStackNavigator();
   return (
     <NavigationContainer>
       <Stack.Navigator
