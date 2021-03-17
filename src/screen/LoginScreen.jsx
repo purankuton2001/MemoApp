@@ -1,14 +1,31 @@
 import React, { useState } from 'react';
 import {
-  View, StyleSheet, TextInput, Text, TouchableOpacity,
+  View, StyleSheet, TextInput, Text, TouchableOpacity, Alert,
 } from 'react-native';
 
+import firebase from 'firebase';
 import Button from '../components/Button';
 
 export default function LoginScreen(props) {
   const { navigation } = props;
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  function handlePress() {
+    firebase.auth().signInWithEmailAndPassword(email, password)
+      .then((UserCredential) => {
+        const { user } = UserCredential;
+        console.log(user.uid);
+        navigation.reset({
+          index: 0,
+          routes: [{ name: 'MemoList' }],
+        });
+      })
+      .catch((error) => {
+        console.log(error.code, error.message);
+        Alert.alert(error.code);
+      });
+  }
+
   return (
     <View style={styles.container} behavior="height">
       <View style={styles.inner}>
@@ -29,15 +46,10 @@ export default function LoginScreen(props) {
           autoCapitalize="none"
           placeholder="Password"
           secureTextEntry
-          textContentType="Password"
+          textContentType="password"
         />
         <Button
-          onPress={() => {
-            navigation.reset({
-              index: 0,
-              routes: [{ name: 'MemoList' }],
-            });
-          }}
+          onPress={handlePress}
           label="submit"
         />
         <View style={styles.footer}>
