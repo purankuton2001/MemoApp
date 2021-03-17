@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import {
   StyleSheet, Text, TouchableOpacity, View,
@@ -6,44 +7,45 @@ import {
 import Icon from './Icon';
 
 export default function MemoList() {
+  const navigation = useNavigation();
   return (
     <View>
-      <View style={styles.memoListItem}>
+      <TouchableOpacity
+        style={styles.memoListItem}
+        onPress={() => { navigation.navigate('MemoDetail'); }}
+      >
         <View>
           <Text style={styles.memoListItemTitle}>買い物リスト</Text>
           <Text style={styles.memoListItemDate}>2020年12月24日 10:00</Text>
         </View>
-        <TouchableOpacity>
+        <TouchableOpacity style={styles.deleteButton}>
           <Icon name="delete" size={24} color="#B0B0B0" />
         </TouchableOpacity>
-      </View>
-      <View style={styles.memoListItem}>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.memoListItem}
+        onPress={() => { navigation.navigate('MemoDetail'); }}
+      >
         <View>
           <Text style={styles.memoListItemTitle}>買い物リスト</Text>
           <Text style={styles.memoListItemDate}>2020年12月24日 10:00</Text>
         </View>
-        <TouchableOpacity>
+        <TouchableOpacity style={styles.deleteButton}>
           <Icon name="delete" size={24} color="#B0B0B0" />
         </TouchableOpacity>
-      </View>
-      <View style={styles.memoListItem}>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.memoListItem}
+        onPress={() => { navigation.navigate('MemoDetail'); }}
+      >
         <View>
           <Text style={styles.memoListItemTitle}>買い物リスト</Text>
           <Text style={styles.memoListItemDate}>2020年12月24日 10:00</Text>
         </View>
-        <TouchableOpacity>
+        <TouchableOpacity style={styles.deleteButton}>
           <Icon name="delete" size={24} color="#B0B0B0" />
         </TouchableOpacity>
-      </View>
-      <View style={styles.memoListItem}>
-        <View>
-          <Text style={styles.memoListItemTitle}>買い物リスト</Text>
-          <Text style={styles.memoListItemDate}>2020年12月24日 10:00</Text>
-        </View>
-        <View>
-          <Icon name="delete" size={24} color="#B0B0B0" />
-        </View>
-      </View>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -67,5 +69,8 @@ const styles = StyleSheet.create({
     fontSize: 12,
     lineHeight: 16,
     color: '#848484',
+  },
+  deleteButton: {
+    padding: 8,
   },
 });
