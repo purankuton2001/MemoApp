@@ -17,11 +17,7 @@ export default function MemoCreateScreen(props) {
         bodyText,
         updatedAt: new Date(),
       })
-        .then((docRef) => {
-          console.log('Created', docRef.id);
-        })
-        .catch((error) => {
-          console.log('Error', error);
+        .catch(() => {
           Alert.alert('メモの作成に失敗しました');
         });
       navigation.goBack();

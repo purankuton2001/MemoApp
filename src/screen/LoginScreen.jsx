@@ -24,9 +24,7 @@ export default function LoginScreen(props) {
   }, []);
   function handlePress() {
     firebase.auth().signInWithEmailAndPassword(email, password)
-      .then((UserCredential) => {
-        const { user } = UserCredential;
-        console.log(user.uid);
+      .then(() => {
         navigation.reset({
           index: 0,
           routes: [{ name: 'MemoList' }],

@@ -26,8 +26,7 @@ export default function MemoDetailScreen(props) {
           bodyText: data.bodyText,
           updatedAt: data.updatedAt.toDate(),
         });
-      }, (error) => {
-        console.log(error.code);
+      }, () => {
         Alert.alert('メモの読み込みに失敗しました。');
       });
     }
