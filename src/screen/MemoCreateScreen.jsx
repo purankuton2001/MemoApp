@@ -48,11 +48,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
   },
   inputContainer: {
-    paddingVertical: 32,
-    paddingHorizontal: 19,
     flex: 1,
   },
   input: {
+    paddingTop: 32,
+    paddingBottom: 32,
+    paddingHorizontal: 19,
     lineHeight: 24,
     fontSize: 16,
     flex: 1,
