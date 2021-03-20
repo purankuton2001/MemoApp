@@ -4,6 +4,7 @@ import {
 } from 'react-native';
 import firebase from 'firebase';
 import Button from '../components/Button';
+import { translateError } from '../utils';
 
 export default function SignupScreen(props) {
   const { navigation } = props;
@@ -21,7 +22,8 @@ export default function SignupScreen(props) {
       })
       .catch((error) => {
         console.log(error.code, error.message);
-        Alert.alert(error.code);
+        const errMsg = translateError(error.code);
+        Alert.alert(errMsg.title, errMsg.description);
       });
   }
 

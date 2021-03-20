@@ -4,9 +4,10 @@ import {
 } from 'prop-types';
 import React from 'react';
 import {
-  StyleSheet, Text, TouchableOpacity, View, FlatList,
+  StyleSheet, Text, TouchableOpacity, View, FlatList, Alert,
 }
   from 'react-native';
+import firebase from 'firebase';
 import Icon from './Icon';
 import { dateToString } from '../utils';
 
@@ -14,6 +15,23 @@ export default function MemoList(props) {
   const { memos } = props;
 
   const navigation = useNavigation();
+
+  function memoDelete(id) {
+    const db = firebase.firestore();
+    const { currentUser } = firebase.auth();
+    if (currentUser) {
+      const ref = db.collection(`users/${currentUser.uid}/memos`).doc(id);
+      Alert.alert('メモを削除します。', 'よろしいですか？', [{
+        text: 'キャンセル',
+        onPress: () => {},
+      }, {
+        text: '削除する',
+        onPress: () => {
+          ref.delete().catch(() => { Alert.alert('メモの削除に失敗しました。'); });
+        },
+      }]);
+    }
+  }
 
   function renderItem({ item }) {
     return (
@@ -25,7 +43,7 @@ export default function MemoList(props) {
           <Text style={styles.memoListItemTitle} numberOfLines={1}>{item.bodyText}</Text>
           <Text style={styles.memoListItemDate}>{dateToString(item.updatedAt)}</Text>
         </View>
-        <TouchableOpacity style={styles.deleteButton}>
+        <TouchableOpacity style={styles.deleteButton} onPress={() => { memoDelete(item.id); }}>
           <Icon name="delete" size={24} color="#B0B0B0" />
         </TouchableOpacity>
       </TouchableOpacity>
